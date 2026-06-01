@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardTech | Servicio Técnico Premium</title>
+    
+    <!-- Iconos y Tipografías de alta fidelidad desde CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN BASE (Estilo Premium Cyber-Dark)
+           ========================================================================== */
+        :root {
+            --bg-pure: #050505;
+            --bg-dark: #0d0d11;
+            --bg-card: rgba(20, 20, 27, 0.65);
+            --metal-silver: #e2e8f0;
+            --metal-dark: #475569;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-pure);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        /* Títulos de sección futuristas */
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            color: var(--metal-silver);
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--metal-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ==========================================================================
+           NAVBAR (Glassmorphism)
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 13, 17, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+            text-shadow: var(--neon-shadow);
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .nav-menu .nav-btn {
+            border: 1px solid var(--accent-cyan);
+            padding: 8px 20px;
+            border-radius: 4px;
+            background: rgba(0, 242, 254, 0.05);
+            box-shadow: var(--neon-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu .nav-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-pure);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 5, 5, 0.95) 40%, rgba(20, 20, 30, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .glitch-text {
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: #fff;
+            text-shadow: 2px 2px 0px var(--accent-cyan), -2px -2px 0px var(--accent-blue);
+            margin-bottom: 20px;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        .hero .subtitle {
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Botones Premium */
+        .btn {
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            padding: 15px 35px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #ffffff, #cbd5e1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: var(--neon-shadow);
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* ==========================================================================
+           MARKETING TICKER (Marquesina Infinita CSS)
+           ========================================================================== */
+        .ticker-wrap {
+            width: 100%;
+            background: #0d0d11;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+            padding: 15px 0;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+
+        .ticker-item {
+            font-family: 'Orbitron', sans-serif;
+            display: inline-block;
+            padding: 0 40px;
+            font-size: 0.95rem;
+            color: var(--metal-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* ==========================================================================
+           SECCIÓN SERVICIOS
+           ========================================================================== */
+        .services-section {
+            background: linear-gradient(to bottom, var(--bg-pure), var(--bg-dark));
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 40px 30px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.1), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.1);
+        }
+
+        .card:hover .card-glow {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--metal-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--metal-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           GALERÍA VISUAL (Estilo Revista Tech)
+           ========================================================================== */
+        .gallery-section {
+            background: var(--bg-pure);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            filter: grayscale(40%);
+            transition: all 0.5s ease;
+        }
+
+        .item-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .item-long {
+            grid-column: span 2;
+        }
+
+        .gallery-desc {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-desc h4 {
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+
+        .gallery-item:hover {
+            filter: grayscale(0%);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .gallery-item:hover .gallery-desc {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           SECCIÓN PRESUPUESTOS (Tabla)
+           ========================================================================== */
+        .pricing-section {
+            background: var(--bg-dark);
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 20px 25px;
+        }
+
+        .pricing-table th {
+            background: rgba(255, 255, 255, 0.03);
+            font-family: 'Orbitron', sans-serif;
+            color: var(--metal-silver);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .pricing-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: background 0.3s ease;
+        }
+
+        .pricing-table tr:hover {
+            background: rgba(0, 242, 254, 0.03);
+        }
+
+        .tech-highlight {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .pricing-table td {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .pricing-table tr:hover td {
+            color: var(--text-main);
+        }
+
+        .table-notice {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .table-notice a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .table-notice a:hover {
+            text-shadow: var(--neon-shadow);
+        }
+
+        /* ==========================================================================
+           POR QUÉ ELEGIRNOS
+           ========================================================================== */
+        .why-section {
+            background: var(--bg-pure);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .why-box {
+            background: linear-gradient(135deg, rgba(15,15,20,0.6), rgba(5,5,5,0.8));
+            border-left: 3px solid var(--metal-dark);
+            padding: 35px 25px;
+            transition: all 0.3s ease;
+        }
+
+        .why-box:hover {
+            border-left-color: var(--accent-cyan);
+            background: rgba(15, 15, 20, 0.9);
+        }
+
+        .why-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.05);
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .why-box:hover .why-num {
+            color: rgba(0, 242, 254, 0.2);
+        }
+
+        .why-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--metal-silver);
+        }
+
+        .why-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .why-location-badge {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px dashed var(--metal-dark);
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .why-location-badge i {
+            color: var(--accent-cyan);
+            margin-right: 8px;
+        }
+
+        /* ==========================================================================
+           UBICACIÓN (Iframe Integrado Estilo Oscuro)
+           ========================================================================== */
+        .maps-section {
+            background: var(--bg-dark);
+            padding-bottom: 0;
+        }
+
+        .map-wrapper {
+            border: 1px solid var(--glass-border);
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+            filter: grayscale(80%) invert(90%) contrast(100%);
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .map-wrapper:hover {
+            filter: grayscale(20%) invert(0%) contrast(100%);
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           CONTACTO
+           ========================================================================== */
+        .contact-section {
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-pure));
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--metal-silver);
+        }
+
+        .contact-p-desc {
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            width: 40px;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: block;
+            text-decoration: none;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .contact-card h4 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .wa-card {
+            background: rgba(37, 211, 102, 0.03);
+        }
+        .wa-card i { color: #25D366; }
+        .wa-card:hover {
+            border-color: #25D366;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.2);
+            background: rgba(37, 211, 102, 0.08);
+        }
+
+        .ig-card {
+            background: rgba(225, 48, 108, 0.03);
+        }
+        .ig-card i { color: #E1306C; }
+        .ig-card:hover {
+            border-color: #E1306C;
+            box-shadow: 0 0 20px rgba(225, 48, 108, 0.2);
+            background: rgba(225, 48, 108, 0.08);
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .main-footer {
+            background: #050507;
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            padding: 0;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo span {
+            color: var(--accent-cyan);
+        }
+
+        .footer-tagline {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-line {
+            width: 60px;
+            height: 2px;
+            background: var(--metal-dark);
+            margin: 25px auto;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        /* ==========================================================================
+           ANIMACIONES CSS
+           ========================================================================== */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 2px 2px 0px var(--accent-cyan), -2px -2px 0px var(--accent-blue); }
+            100% { text-shadow: 4px 4px 15px var(--accent-cyan), -4px -4px 15px var(--accent-blue); }
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN (Media Queries sin JS)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .glitch-text { font-size: 3.5rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+            .item-large { grid-column: span 2; grid-row: span 1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Limpieza de Navbar para Mobile */
+            .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+            .section-title { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .item-large, .item-long { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">GUARD<span>TECH</span></a>
+            <nav class="nav-menu">
+                <a href="#servicios">Servicios</a>
+                <a href="#galeria">Galería</a>
+                <a href="#presupuestos">Presupuestos</a>
+                <a href="#elegirnos">Nosotros</a>
+                <a href="#contacto" class="nav-btn">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="glitch-text">GuardTech</h1>
+            <p class="subtitle">Reparamos tu tecnología. Recuperamos tu tranquilidad.</p>
+            <div class="hero-buttons">
+                <a href="#presupuestos" class="btn btn-primary">Consultar Presupuesto</a>
+                <a href="https://wa.me/5491130251343" target="_blank" class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKETING TICKER (Efecto Marquesina continua) -->
+    <section class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">● Diagnóstico rápido y confiable</div>
+            <div class="ticker-item">● Tu dispositivo en manos expertas</div>
+            <div class="ticker-item">● Más velocidad, más rendimiento, menos problemas</div>
+            <div class="ticker-item">● Presupuestos sin compromiso</div>
+            <div class="ticker-item">● Soluciones tecnológicas para tu día a día</div>
+            <div class="ticker-item">● Atención personalizada y profesional</div>
+            <!-- Duplicado exacto para flujo infinito en bucle -->
+            <div class="ticker-item">● Diagnóstico rápido y confiable</div>
+            <div class="ticker-item">● Tu dispositivo en manos expertas</div>
+            <div class="ticker-item">● Más velocidad, más rendimiento, menos problemas</div>
+            <div class="ticker-item">● Presupuestos sin compromiso</div>
+            <div class="ticker-item">● Soluciones tecnológicas para tu día a día</div>
+            <div class="ticker-item">● Atención personalizada y profesional</div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Servicios <span>Especializados</span></h2>
+            <div class="services-grid">
+                
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-mobile-alt card-icon"></i>
+                    <h3>Reparación de Celulares</h3>
+                    <p>Cambio de módulos, microsoldadura en placas integradas, cambio de baterías y corrección de software.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-laptop card-icon"></i>
+                    <h3>Reparación de Computadoras</h3>
+                    <p>Soporte técnico avanzado para Notebooks y PCs de escritorio. Diagnósticos de hardware complejos y upgrades.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-tablet-alt card-icon"></i>
+                    <h3>Reparación de Tablets</h3>
+                    <p>Soluciones efectivas para pantallas táctiles dañadas, pines de carga defectuosos y calibración de sistemas.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-microchip card-icon"></i>
+                    <h3>Diagnóstico Técnico</h3>
+                    <p>Análisis exhaustivo inicial con instrumental moderno para detectar el origen exacto del fallo sin margen de error.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-tools card-icon"></i>
+                    <h3>Presupuestos de Armado</h3>
+                    <p>Planificación y presupuestos detallados a medida para configuraciones de PCs Gaming, Edición o Trabajo.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-tachometer-alt card-icon"></i>
+                    <h3>Mantenimiento integral</h3>
+                    <p>Limpieza física de disipadores, reemplazo preventivo de pasta térmica y optimización lógica del sistema.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA VISUAL (Diseño Estilo Revista) -->
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Laboratorio <span>Visual</span></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item item-large" style="background-image: url('https://images.unsplash.com/photo-1517055729445-fa7d27394b48?auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-desc"><h4>Microelectrónica de Precisión</h4></div>
+                </div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1591405351990-4726e331f141?auto=format&fit=crop&w=600&q=80');">
+                    <div class="gallery-desc"><h4>Integración de Hardware</h4></div>
+                </div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80');">
+                    <div class="gallery-desc"><h4>Sistemas Optimizados</h4></div>
+                </div>
+                <div class="gallery-item item-long" style="background-image: url('https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-desc"><h4>Diagnóstico de Dispositivos Móviles</h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PRESUPUESTOS (Tabla de Referencia) -->
+    <section id="presupuestos" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Tabla de <span>Referencia</span></h2>
+            <div class="table-container">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Servicio Sugerido</th>
+                            <th>Estado o Fallo Base</th>
+                            <th>Acción Técnico Estándar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tech-highlight">Cambio de Pantalla</td>
+                            <td>Vidrio trisado / Pérdida táctil</td>
+                            <td>Reemplazo de módulo completo Premium</td>
+                        </tr>
+                        <tr>
+                            <td class="tech-highlight">Cambio de Batería</td>
+                            <td>Autonomía baja / Apagados súbitos</td>
+                            <td>Instalación de repuesto homologado + Ciclo de carga</td>
+                        </tr>
+                        <tr>
+                            <td class="tech-highlight">Limpieza Interna</td>
+                            <td>Sobrecalentamiento / Ruido extremo</td>
+                            <td>Desarme full, remoción de polvo y cambio de pasta térmica</td>
+                        </tr>
+                        <tr>
+                            <td class="tech-highlight">Armado de PC Personalizada</td>
+                            <td>Componentes adquiridos por ensamblar</td>
+                            <td>Montaje estructurado + Gestión avanzada de cableado</td>
+                        </tr>
+                        <tr>
+                            <td class="tech-highlight">Instalación de Sistema Operativo</td>
+                            <td>Ralentización crítica / Virus crónicos</td>
+                            <td>Formateo limpio, particionado óptimo y setup de drivers</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-notice">
+                <i class="fas fa-exclamation-triangle"></i> Los valores definitivos varían de acuerdo a la marca y modelo exacto. 
+                <a href="https://wa.me/5491130251343" target="_blank">Consultá tu presupuesto actualizado por WhatsApp.</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section id="elegirnos" class="why-section">
+        <div class="container">
+            <h2 class="section-title">Estándar <span>GuardTech</span></h2>
+            <div class="why-grid">
+                <div class="why-box">
+                    <span class="why-num">01</span>
+                    <h3>Atención Rápida</h3>
+                    <p>Entendemos que tus dispositivos son vitales en tu día a día. Minimizamos los tiempos muertos de espera.</p>
+                </div>
+                <div class="why-box">
+                    <span class="why-num">02</span>
+                    <h3>Experiencia Técnico</h3>
+                    <p>Especialistas capacitados de manera constante en microsoldadura y arquitecturas de hardware vigentes.</p>
+                </div>
+                <div class="why-box">
+                    <span class="why-num">03</span>
+                    <h3>Precios Accesibles</h3>
+                    <p>Cotizaciones transparentes basadas en el problema real. Soluciones profesionales sin sobrecostos ocultos.</p>
+                </div>
+                <div class="why-box">
+                    <span class="why-num">04</span>
+                    <h3>Diagnósticos Precisos</h3>
+                    <p>Evaluamos tus equipos metódicamente usando herramientas de medición eléctrica de grado de laboratorio.</p>
+                </div>
+            </div>
+            <div class="why-location-badge">
+                <i class="fas fa-map-marker-alt"></i> Cobertura oficial y recepción en Villa Raffo y áreas aledañas.
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN (Google Maps Integrado Versión Local y Web) -->
+    <section class="maps-section">
+        <div class="container" style="padding-bottom: 0;">
+            <h2 class="section-title">Zona de <span>Cobertura</span></h2>
+            <div class="map-wrapper">
+                <iframe src="https://maps.google.com/maps?q=Villa%20Raffo,%20Tres%20de%20Febrero,%20Buenos%20Aires&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Canales de <span>Enlace</span></h2>
+            <div class="contact-grid">
+                
+                <div class="contact-info">
+                    <h3>¿Listo para restaurar tus equipos?</h3>
+                    <p class="contact-p-desc">Elegí la vía de comunicación que prefieras. Un analista técnico te proveerá claridad absoluta sobre el proceso y tiempos estimados.</p>
+                    <div class="info-item">
+                        <i class="fas fa-map-pin"></i>
+                        <span>Villa Raffo, Buenos Aires, Argentina</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>11 3025-1343</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-instagram"></i>
+                        <span>@guarnio__</span>
+                    </div>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="https://wa.me/5491130251343" target="_blank" class="contact-card wa-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <h4>Iniciar Enlace por WhatsApp</h4>
+                        <p>Atención fluida y respuestas inmediatas</p>
+                    </a>
+                    <a href="https://instagram.com/guarnio__" target="_blank" class="contact-card ig-card">
+                        <i class="fab fa-instagram"></i>
+                        <h4>Seguinos en Instagram</h4>
+                        <p>Descubrí el registro de nuestros desarrollos diarios</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p class="footer-logo">GUARD<span>TECH</span></p>
+            <p class="footer-tagline">Tecnología en buenas manos.</p>
+            <div class="footer-line"></div>
+            <p class="copyright">&copy; 2026 GuardTech. Todos los derechos reservados. Arquitectura y Estilo de Alta Gama.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
